@@ -1,7 +1,8 @@
-import streamlit as st 
-import pandas as pd 
-import numpy as np
 import pyrebase
+from ultralytics import YOLO
+import PIL
+import cv2
+import streamlit as st
 
 #config firebase
 config = {
@@ -14,35 +15,25 @@ config = {
     "appId": "1:733768297155:web:0935579af1e0f953939076",
     "measurementId": "G-WJ0G1NM3NR"
 }
+kolA1, kolA2 = st.columns(2)
+with kolA1:
+    st.image ("LOGO SIC.png",width=150)
+with kolA2 :
+    st.title ("EAGLE VISION")
 
-#init firebase &database
+#init firebase
 firebase = pyrebase.initialize_app(config)
+storage = firebase.storage()
 db = firebase.database()
 
+img = storage.child("data/photo.jpg").download(" ", filename="photo.jpg")
+jumlah_siswa = 25
 
-
-data1 = db.child("Kelas").get()
-data = data1.val()
-print (data)
-print (type(data))
-
-
-
-'''
-#title
-st.title ("""BsinG!""")
-
-#kolom
-opsi_kelas = "XA","XB","XC","XD"
-kelas = st.selectbox ("Kelas : ", opsi_kelas)
-
-sensor1, sensor2, sensor3 = st.columns(3)
-
-with sensor1 :
-    st.metric (label="SoundLevel 1", value="65 dB", delta = " -5 dB")
-with sensor2 :
-    st.metric (label="SoundLevel 2", value="70 dB", delta = " -1 dB")
-with sensor3 :
-    st.metric (label="SoundLevel 3", value="63 dB", delta = " 4 dB")  
-
-'''
+model = YOLO("model1.pt")
+uploaded_image = PIL.Image.open("photo.jpg")
+res = model.predict(uploaded_image,conf=0.5,save=True)
+box = res[0].boxes.xyxy.tolist()
+res_plotted = res[0].plot()[:, :, ::-1]
+st.image(res_plotted, caption='Foto Kelas',use_column_width=True)
+st.write("Jumlah Siswa : "+str(len(box)))
+st.write ("Jumlah Tidak masuk : "+str(jumlah_siswa-len(box)))
