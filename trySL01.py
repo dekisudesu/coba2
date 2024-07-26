@@ -1,7 +1,6 @@
 import pyrebase
 from ultralytics import YOLO
 import PIL
-import cv2
 import streamlit as st
 
 #config firebase
