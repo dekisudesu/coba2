@@ -6,14 +6,14 @@ import streamlit as st
 
 #config firebase
 config = {
-    "apiKey": "AIzaSyALrAWJFvvAgJggC7zRWm1n2HSVvLDfJbw",
-    "authDomain": "ambil-gambar-783c2.firebaseapp.com",
-    "databaseURL": "https://ambil-gambar-783c2-default-rtdb.firebaseio.com",
-    "projectId": "ambil-gambar-783c2",
-    "storageBucket": "ambil-gambar-783c2.appspot.com",
-    "messagingSenderId": "733768297155",
-    "appId": "1:733768297155:web:0935579af1e0f953939076",
-    "measurementId": "G-WJ0G1NM3NR"
+    "apiKey": "AIzaSyAqOTZ1kW18Wu9I5K5bAWzSqG6g7rJLsDA",
+    "authDomain": "coba-aja-deh-4514e.firebaseapp.com",
+    "databaseURL": "https://coba-aja-deh-4514e-default-rtdb.firebaseio.com",
+    "projectId" : "coba-aja-deh-4514e",
+    "storageBucket": "coba-aja-deh-4514e.appspot.com",
+    "messagingSenderId": "1081659574106",
+    "appId": "1:1081659574106:web:c35a71d0aeebc4d3439563",
+    "measurementId": "G-JGY9ZS4REC"
 }
 kolA1, kolA2 = st.columns(2)
 with kolA1:
