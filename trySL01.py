@@ -12,8 +12,8 @@ config = {
     "projectId" : "coba-aja-deh-4514e",
     "storageBucket": "coba-aja-deh-4514e.appspot.com",
     "messagingSenderId": "1081659574106",
-    "appId": "1:1081659574106:web:c35a71d0aeebc4d3439563",
-    "measurementId": "G-JGY9ZS4REC"
+    "appId": "1:1081659574106:web:c35a71d0aeebc4d3439563"
+    #"measurementId": "G-JGY9ZS4REC"
 }
 kolA1, kolA2 = st.columns(2)
 with kolA1:
